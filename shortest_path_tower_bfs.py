@@ -1,7 +1,13 @@
+# -*- coding: utf-8 -*-
+""" Breadth First Search File"""
 from queue import Queue
 
-class BFS:
+
+class BreadthFirstSearch:
+    """Breadth First Search Algorithm"""
+
     def __init__(self, grid):
+        """Init"""
         self.grid = grid
         self.queue = Queue()
         self.paths = {grid.start: None}
@@ -13,14 +19,14 @@ class BFS:
             if current == self.grid.goal:
                 return self.reconstruct_path(current)
 
-            for next in self.grid.get_neighbors(current):
-                if next not in self.paths:
-                    self.paths[next] = current
-                    self.queue.enqueue(next)
+            for next_neighbor in self.grid.get_neighbors(current):
+                if next_neighbor not in self.paths:
+                    self.paths[next_neighbor] = current
+                    self.queue.enqueue(next_neighbor)
 
         return None
 
-    def reconstruct_path(self, current):
+    def reconstruct_path(self, current) -> tuple:
         path = []
         while current is not None:
             path.append(current)
