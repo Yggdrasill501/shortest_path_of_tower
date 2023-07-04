@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+"""File to run shortest path tower problem with A* algorithm implementation"""
+
+def read_grid_from_file(filename):
+    with open(filename, 'r') as file:
+        grid = [list(line.strip()) for line in file]
+    return grid
+
+
+# A* algorithm
 def a_star(grid, start, goal):
     # Heuristic function
     def heuristic(a, b):
@@ -45,15 +55,9 @@ def a_star(grid, start, goal):
     return None, None
 
 
-def read_grid_from_file(filename):
-    with open(filename, 'r') as file:
-        grid = [list(line.strip()) for line in file]
-    return grid
-
-
 # Main function
 def main():
-    filename = "../grid.txt"
+    filename = "grid.txt"
     grid = read_grid_from_file(filename)
     start, goal = None, None
     for i in range(len(grid)):
@@ -74,3 +78,7 @@ def main():
         print("Found a path with cost: ", cost)
         for p in path:
             print(p)
+
+
+if __name__ == "__main__":
+    main()
