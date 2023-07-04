@@ -28,9 +28,9 @@ class Grid:
         result = []
 
         for (i, j) in neighbors:
-            next_neighbour = (position[0] + i, position[1] + j)
-            if 0 <= next_neighbour[0] < len(self.grid) and 0 <= next_neighbour[1] < len(self.grid[0]):
-                if self.grid[next_neighbour[0]][next_neighbour[1]] != '1':
-                    result.append(next_neighbour)
+            next_neighbor = (position[0] + i, position[1] + j)
+            if 0 <= next_neighbor[0] < len(self.grid) and 0 <= next_neighbor[1] < len(self.grid[0]):
+                if self.grid[next_neighbor[0]][next_neighbor[1]] != '1':
+                    result.append(next_neighbor)
 
         return result

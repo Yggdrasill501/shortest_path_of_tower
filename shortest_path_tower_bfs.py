@@ -13,9 +13,12 @@ class BreadthFirstSearch:
         self.paths = {grid.start: None}
 
     def find_path(self):
+        """Find path from start to goal"""
         self.queue.enqueue(self.grid.start)
+
         while not self.queue.is_empty():
             current = self.queue.dequeue()
+
             if current == self.grid.goal:
                 return self.reconstruct_path(current)
 
@@ -27,9 +30,12 @@ class BreadthFirstSearch:
         return None
 
     def reconstruct_path(self, current) -> tuple:
+        """Reconstruct path from start to goal"""
         path = []
+
         while current is not None:
             path.append(current)
             current = self.paths[current]
+
         path.reverse()
         return path, len(path) - 1

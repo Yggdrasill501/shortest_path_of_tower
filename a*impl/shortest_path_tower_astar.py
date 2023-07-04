@@ -10,7 +10,7 @@ def read_grid_from_file(filename):
 
 # A* algorithm
 def a_star(grid, start, goal):
-    # Heuristic function
+    """A* algorithm implementation"""
     def heuristic(a, b):
         return abs(b[0] - a[0]) + abs(b[1] - a[1])
 

@@ -13,6 +13,7 @@ def main():
 
     if path is None:
         print("No path found.")
+
     else:
         print("Found a path with cost: ", path[1])
         for p in path[0]:
