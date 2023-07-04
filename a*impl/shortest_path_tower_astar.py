@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""File to run shortest path tower problem with A* algorithm implementation"""
+"""File to run the shortest path tower problem with A* algorithm implementation"""
+
 
 def read_grid_from_file(filename):
     with open(filename, 'r') as file:
@@ -14,12 +15,12 @@ def a_star(grid, start, goal):
         return abs(b[0] - a[0]) + abs(b[1] - a[1])
 
     # Function to find the cell with the lowest f value in the open list
-    def find_lowest_f_cell(open_list, f_score):
+    def find_lowest_f_cell(open_list, score):
         lowest_f = float("inf")
         lowest_f_cell = None
         for cell in open_list:
-            if f_score[cell] < lowest_f:
-                lowest_f = f_score[cell]
+            if score[cell] < lowest_f:
+                lowest_f = score[cell]
                 lowest_f_cell = cell
         return lowest_f_cell
 
@@ -42,16 +43,16 @@ def a_star(grid, start, goal):
         open_list.remove(current)
 
         for (i, j) in neighbors:
-            next = (current[0] + i, current[1] + j)
+            next_neighbor = (current[0] + i, current[1] + j)
             # check if the neighbor cell is valid
-            if 0 <= next[0] < len(grid) and 0 <= next[1] < len(grid[0]):
-                if grid[next[0]][next[1]] != '1':
+            if 0 <= next_neighbor[0] < len(grid) and 0 <= next_neighbor[1] < len(grid[0]):
+                if grid[next_neighbor[0]][next_neighbor[1]] != '1':
                     new_cost = paths_and_distances[current][1] + 1
-                    if next not in paths_and_distances or new_cost < paths_and_distances[next][1]:
-                        paths_and_distances[next] = (current, new_cost)
-                        f_score[next] = new_cost + heuristic(goal, next)
-                        if next not in open_list:
-                            open_list.append(next)
+                    if next_neighbor not in paths_and_distances or new_cost < paths_and_distances[next_neighbor][1]:
+                        paths_and_distances[next_neighbor] = (current, new_cost)
+                        f_score[next_neighbor] = new_cost + heuristic(goal, next_neighbor)
+                        if next_neighbor not in open_list:
+                            open_list.append(next_neighbor)
     return None, None
 
 
