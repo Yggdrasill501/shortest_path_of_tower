@@ -15,6 +15,7 @@ class Grid:
             for j in range(len(self.grid[0])):
                 if self.grid[i][j] == 'S':
                     self.start = (i, j)
+
                 elif self.grid[i][j] == 'E':
                     self.goal = (i, j)
 
