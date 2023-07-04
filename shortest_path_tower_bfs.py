@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """ Breadth First Search File"""
-from queue import Queue
+from queue_impl import Queue
 
 
 class BreadthFirstSearch:
