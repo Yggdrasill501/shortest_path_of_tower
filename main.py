@@ -21,3 +21,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    #BreadthFirstSearch(Grid("grid.txt")).find_path()
